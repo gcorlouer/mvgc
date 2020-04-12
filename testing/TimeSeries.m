@@ -5,20 +5,21 @@ classdef TimeSeries
 % - add epoching
 % - add pick time segment
 % - filter ?
-% - Inheritence ? 
+% - Inheritence ?
 % - plot cpsd
-% - some descriptive stat? 
+% - some descriptive stat?
+% - Code a python version
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    properties 
+    properties
         timeStamp
         srate
         nobs
         nchans
         data
     end
-    
+
     methods
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%       
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         function ts = TimeSeries(EEG) % See alternative at the end
             if nargin == 1
                 ts.timeStamp = EEG.times;
@@ -34,13 +35,13 @@ classdef TimeSeries
             ts.data = ts.data(picks,:,:);
             ts.nchans = size(ts.data, 1);
         end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
         function ts = drop_chans(ts, drops)
             if nargin < 2, drops = []; end
             ts.data(drops,:,:) = [];
             ts.nchans = size(ts.data, 1);
         end
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%        
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     end
 end
 
