@@ -20,6 +20,7 @@ function [R,L,retries,iters] = corr_rand_alt(n,r,tol,maxretries,maxiters)
 % retries    - number of retries required
 % iters      - number of binary chop iterations required
 
+% Suggestion: change function with varargin
 if nargin < 3 || isempty(tol),        tol        = sqrt(eps); end
 if nargin < 4 || isempty(maxretries), maxretries = 1000;      end
 if nargin < 5 || isempty(maxiters),   maxiters   = 1000;      end
